@@ -1,24 +1,4 @@
 ---
-# Source: istio-autoinject/templates/poddisruptionbudget.yaml
-
-apiVersion: policy/v1beta1
-kind: PodDisruptionBudget
-metadata:
-  name: istio-sidecar-injector
-  namespace: istio-control
-  labels:
-    app: sidecar-injector
-    release: istio-control-istio-autoinject
-    istio: sidecar-injector
-spec:
-  minAvailable: 1
-  selector:
-    matchLabels:
-      app: sidecar-injector
-      release: istio-control-istio-autoinject
-      istio: sidecar-injector
-
----
 # Source: istio-autoinject/templates/sidecar-injector-configmap.yaml
 
 apiVersion: v1
@@ -612,4 +592,24 @@ webhooks:
       matchLabels:
         istio-env: istio-control
 ---
+
+---
+# Source: istio-autoinject/templates/poddisruptionbudget.yaml
+
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: istio-sidecar-injector
+  namespace: istio-control
+  labels:
+    app: sidecar-injector
+    release: istio-control-istio-autoinject
+    istio: sidecar-injector
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: sidecar-injector
+      release: istio-control-istio-autoinject
+      istio: sidecar-injector
 

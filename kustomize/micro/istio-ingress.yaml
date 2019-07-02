@@ -1,24 +1,4 @@
 ---
-# Source: istio-ingress/templates/poddisruptionbudget.yaml
-
-apiVersion: policy/v1beta1
-kind: PodDisruptionBudget
-metadata:
-  name: ingressgateway
-  namespace: istio-micro
-  labels:
-    app: istio-ingressgateway
-    release: istio-micro-istio-ingress
-    istio: ingressgateway
-spec:
-  minAvailable: 1
-  selector:
-    matchLabels:
-      app: istio-ingressgateway
-      release: istio-micro-istio-ingress
-      istio: ingressgateway
-
----
 # Source: istio-ingress/templates/serviceaccount.yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -312,6 +292,26 @@ spec:
         name: cpu
         targetAverageUtilization: 80
 ---
+
+---
+# Source: istio-ingress/templates/poddisruptionbudget.yaml
+
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: ingressgateway
+  namespace: istio-micro
+  labels:
+    app: istio-ingressgateway
+    release: istio-micro-istio-ingress
+    istio: ingressgateway
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: istio-ingressgateway
+      release: istio-micro-istio-ingress
+      istio: ingressgateway
 
 ---
 # Source: istio-ingress/templates/sidecar.yaml
