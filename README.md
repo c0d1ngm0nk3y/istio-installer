@@ -4,6 +4,8 @@
 
 # Istio Installer
 
+A dummy change
+
 Istio installer is a modular, 'a-la-carte' installer for Istio. It is based on a
 fork of istio helm templates, refactored to increase modularity and isolation.
 
